@@ -1,0 +1,14 @@
+{
+  "name": "apollo-server",
+  "version": "1.0.0",
+  "description": "graphql endpoint for mongo",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.19.0",
+    "d3-cloud": "^1.2.5",
+    "d3.layout.cloud": "^1.2.0",
+    "graphql": "^15.4.0",
+    "mongodb": "^3.6.5"
+  }
+}

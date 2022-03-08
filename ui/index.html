@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="js/d3.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel='stylesheet' href='css/style.css'>
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+        img{
+
+          width:100%;
+        }
+
+</style>
+    </head>
+  
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="index.html">Acueil</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="games.html">Video Games </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="histogramme.html">Histograme</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="plateform.html">Plateform</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="publisher.html">Publisher</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+ <section id="content" class="container">
+            <div class="main-content">
+            
+              <div class="row" id="d3-content">
+                <h2 class="row">Site sur les Video Games</h2>
+                <div class="row well">
+                    Ce Site web présente les différentes vidéo games qui existes et le détail de chaque video games développée (Prix , PLateform...). 
+                    la source de ces données est sur le site :
+                    <a href="https://data.world/sumitrock/video-games-sales" target="_blank">Data Games</a>:
+
+                    Durant ce projet nous avons utilisé :
+                    <ul>
+                      <li>Docker :</li>
+                      <ul>
+                        <li>Le module Mongodb pour la création de la bases de données a partir d'un fichier JSON</li>
+                        <li>Le module Appolo-server pour la création du serveur et pour gérer les différentes routes</li>
+                        <li>Le module Graphql pour lancer les requettes et récuperer les données de notre base de données mongo</li>
+                      </ul>
+                      <li>D3.js pour la visualisation de données générée</li>
+                      <li>Bootstrap et CSS pour le style des pages html</li>
+                    </ul>
+                       
+                </div>
+              </div>
+            </div>
+            <div id="nconf"></div>
+    </section>
+
+
+<img src="img/games.jpeg"></img>
+
+
+    
+
+   
+
+   </body>
+
+</html>

@@ -1,0 +1,51 @@
+scalar JSON
+
+
+
+type Game{
+
+    _id : ID        
+    Global_Sales: String
+    Name: String
+    User_Score :String
+    Genre :String
+    Year_of_Release :String 
+    Platform : String
+    Rating: String	
+}
+
+
+type Genre{
+ 
+    Genre :String
+    count: Int
+   
+}
+
+
+type Platform{
+
+    Platform :String
+    count: Int
+   
+}
+
+type Publisher{
+
+    Publisher :String
+    count: Int
+   
+}
+
+
+
+
+
+
+type Query {
+    
+    games: [Game]
+    genre : [Genre]
+    platform :[Platform]
+    publisher :[Publisher]
+}

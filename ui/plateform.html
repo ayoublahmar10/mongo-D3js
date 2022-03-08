@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+        <title>Video Games</title>
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='style.css'>
+  </head>
+
+  
+
+  
+  <body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="index.html">Acueil</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="games.html">Video Games </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="histogramme.html">Histograme</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="plateform.html">Plateform</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="publisher.html">Publisher</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div> 
+<h2> Bubble Chart sur les Plateforms selon les nombres de video games <h2>
+
+<div id="bubblechart"> </div>
+   
+
+    <script>
+
+
+
+function CreateSVG(){
+
+return d3.select("#bubblechart").append("svg")
+      .attr("viewBox", [0, 0, 1200, 700])
+      .attr("font-size", 10)
+      .attr("font-family", "sans-serif")
+       .attr("font-weight", "bold")
+      .attr("text-anchor", "middle");
+
+}
+
+function drawChart(svg,data){
+
+  
+  let hieachalData= makeHierarchy(data);
+  let packLayout= pack([1200-40,700-40])
+  const root =packLayout(hieachalData);
+
+  const leaf = svg.selectAll("g")
+    .data(root.leaves())
+    .join("g")
+      .attr("transform", d => `translate(${d.x + 1},${d.y + 1})`);
+
+  leaf.append("circle")
+     
+      .attr("r", d => d.r )
+      .attr("fill-opacity", 0.7)
+      
+      .attr("fill", "navy");
+
+      leaf.append("text")
+      .attr("clip-path", d => d.clipUid)
+    .selectAll("tspan")
+    .data(d => d.data.Platform.split(/(?=[A-Z][a-z])|\s+/g))
+    .join("tspan")
+      .attr("x", 0)
+      .attr("y", (d, i, nodes) => `${i - nodes.length / 2 + 0.8}em`)
+      .text(d => d)
+
+
+}   
+
+
+function pack(size){
+  return d3.pack()
+  .size(size)
+  .padding(30)
+
+
+}
+
+function makeHierarchy(data){
+
+  return d3.hierarchy({children : data})
+  .sum(d=> d.count);
+  }
+
+
+
+  
+        function showPlateform(root) {
+            console.log(root.data.platform);
+            data = root.data.platform;
+            let svg = CreateSVG();
+            drawChart(svg,data);
+
+
+
+
+        
+
+          }
+
+      
+
+
+
+
+        d3.json("http://localhost:4000/?query={platform{ Platform count  }}").then(showPlateform);
+    </script>
+
+     </body>
+</html>
